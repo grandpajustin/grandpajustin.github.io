@@ -68,8 +68,9 @@ h2{font-size:34px;letter-spacing:-.015em;margin:6px 0 0}
 /* featured */
 .feature{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px;margin-bottom:28px}
 @media(max-width:900px){.feature{grid-template-columns:1fr}}
-.feature .imgs{display:grid;grid-template-columns:1.4fr 1fr;gap:10px}
+.feature .imgs{display:grid;grid-template-columns:1fr;gap:10px}
 .feature .imgs img{width:100%;height:320px;object-fit:cover;border-radius:8px;cursor:zoom-in}
+.feature .imgs img.hero-shot{height:auto;aspect-ratio:3/2}
 .feature h3{font-size:26px;margin:8px 0 10px;letter-spacing:-.01em}
 .badge{display:inline-block;font-family:var(--mono);font-size:12px;padding:4px 8px;border-radius:4px;background:#fff6e0;color:#8a5a00;border:1px solid #f1d58f}
 
@@ -154,11 +155,11 @@ footer .mono{font-family:var(--mono);font-size:14px}
 .lb-stage video{max-height:100%;max-width:100%;border-radius:6px;background:#000}
 .strip img.v{outline:2px dashed #8fb3f5;outline-offset:-2px}
 .strip img.v.on{outline:2px solid var(--warm)}
-.feature .more{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;grid-column:1/-1}
+.feature .more{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;grid-column:1/-1}
 .feature .more .t{position:relative;cursor:zoom-in}
-.feature .more img{width:100%;height:72px;object-fit:cover;border-radius:6px;display:block}
+.feature .more img{width:100%;height:64px;object-fit:cover;border-radius:6px;display:block}
 .feature .more .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;color:#fff;font-size:22px;text-shadow:0 1px 6px rgba(0,0,0,.7)}
-@media(max-width:600px){.feature .more{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.feature .more{grid-template-columns:repeat(4,1fr)}}
 .lb-info{background:#111821;color:#d5dde6;padding:22px;overflow:auto;font-size:14.5px}
 .lb-info dl.spec dt{color:#8796a6}
 .lb-info p{margin:0 0 10px}
@@ -216,13 +217,13 @@ footer .mono{font-family:var(--mono);font-size:14px}
 
     <div class="feature">
       <div class="imgs">
-        <img src="img/sifly-display.jpg" alt="SiFly drone with camera payload on display" data-open="sifly" data-i="0">
-        <img src="img/p004-001.jpg" alt="SiFly quadcopters" data-open="sifly" data-i="1">
+        <img class="hero-shot" src="img/sifly-ops.jpg" alt="Justin running a flight test at dusk" data-open="sifly" data-i="0">
         <div class="more">
-          <div class="t" data-open="sifly"><img src="img/p004-000.jpg" alt="Justin holding a Guinness World Records certificate" data-i="2" style="object-position:top"></div>
-          <div class="t" data-open="sifly"><img src="img/sifly-orbit.jpg" alt="Video: SiFly drone orbiting over a farm field" data-i="3"><span class="play">▶</span></div>
-          <div class="t" data-open="sifly"><img src="img/sifly-field.jpg" alt="Justin with a SiFly drone on a landing pad" data-i="4"></div>
-          <div class="t" data-open="sifly"><img src="img/sifly-ops.jpg" alt="Justin running a flight test at dusk" data-i="5"></div>
+          <div class="t" data-open="sifly"><img src="img/sifly-display.jpg" alt="SiFly drone with camera payload on display" data-i="1"></div>
+          <div class="t" data-open="sifly"><img src="img/p004-001.jpg" alt="SiFly quadcopters" data-i="2"></div>
+          <div class="t" data-open="sifly"><img src="img/p004-000.jpg" alt="Justin holding a Guinness World Records certificate" data-i="3" style="object-position:top"></div>
+          <div class="t" data-open="sifly"><img src="img/sifly-orbit.jpg" alt="Video: SiFly drone orbiting over a farm field" data-i="4"><span class="play">▶</span></div>
+          <div class="t" data-open="sifly"><img src="img/sifly-field.jpg" alt="Justin with a SiFly drone on a landing pad" data-i="5"></div>
           <div class="t" data-open="sifly"><img src="img/sifly-award.jpg" alt="SiFly team with Uncrewed Triple Challenge prize checks" data-i="6"></div>
           <div class="t" data-open="sifly"><img src="img/sifly-flag.jpg" alt="SiFly drone carrying a payload in flight" data-i="7"></div>
         </div>
@@ -354,7 +355,7 @@ footer .mono{font-family:var(--mono);font-size:14px}
 
 <script>
 const P = {
-  sifly:{t:"Long-Endurance Autonomous Quadcopter",y:"SiFly Aviation · 2026",imgs:["sifly-display","p004-001","p004-000","vid:sifly-orbit","sifly-field","sifly-ops","sifly-award","sifly-flag"],
+  sifly:{t:"Long-Endurance Autonomous Quadcopter",y:"SiFly Aviation · 2026",imgs:["sifly-ops","sifly-display","p004-001","p004-000","vid:sifly-orbit","sifly-field","sifly-award","sifly-flag"],
     body:"<p>World-record-breaking endurance quadcopter developed as a founding team member at SiFly Aviation.</p>",
     spec:[["Role","Founding team member, lead engineer, lead pilot"],["Scope","Engineering leadership, product development, flight testing, product demonstrations"],["Result","Guinness World Record for endurance"]]},
   coax:{t:"Coaxial Helicopter & Novel UAVs",y:"SiFly Aviation · 2023",imgs:["new-54","new-53","new-52","vid:new-55"],fit:"cover",
