@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Justin Lee — Mechanical Engineering Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16202b; --muted:#5b6876; --line:#dfe4ea; --bg:#f6f7f9; --card:#fff;
+  --accent:#1f5fd1; --accent-soft:#e8f0fd; --warm:#e8a317;
+  --mono:'IBM Plex Mono',ui-monospace,monospace; --sans:'IBM Plex Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.55;font-size:16px}
+a{color:var(--accent)}
+img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:rgba(246,247,249,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+nav .brand{font-weight:700;letter-spacing:.2px;text-decoration:none;color:var(--ink)}
+nav .links{display:flex;gap:22px}
+nav .links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500}
+nav .links a:hover{color:var(--ink)}
+@media(max-width:720px){nav .links{display:none}}
+
+/* hero */
+.hero{padding:72px 0 56px;background:
+  linear-gradient(var(--bg),var(--bg)) padding-box,
+  repeating-linear-gradient(0deg,transparent 0 23px,#e9edf2 23px 24px),
+  repeating-linear-gradient(90deg,transparent 0 23px,#e9edf2 23px 24px);
+  border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
+.who{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.who img{width:88px;height:88px;border-radius:50%;object-fit:cover;box-shadow:0 6px 18px -6px rgba(22,32,43,.45);border:3px solid #fff}
+.who b{display:block;font-size:20px}
+.eyebrow{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+h1{font-size:clamp(38px,5.5vw,60px);line-height:1.05;margin:12px 0 18px;letter-spacing:-.02em}
+.lede{font-size:19px;color:#2d3946;max-width:600px;margin:0 0 28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:11px 18px;border-radius:6px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--ink)}
+.btn.primary{background:var(--ink);color:#fff}
+.btn.ghost{color:var(--ink);background:#fff}
+.contact-line{margin-top:18px;font-family:var(--mono);font-size:13px;color:var(--muted)}
+.hero-img{position:relative;border-radius:10px;overflow:hidden;box-shadow:0 20px 50px -20px rgba(22,32,43,.35)}
+.hero-img img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.hero-img .tag{position:absolute;left:12px;bottom:12px;background:rgba(22,32,43,.85);color:#fff;font-family:var(--mono);font-size:12px;padding:6px 10px;border-radius:4px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:56px;border:1px solid var(--line);border-radius:10px;background:#fff;overflow:hidden}
+.stat{padding:20px 22px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-size:30px;letter-spacing:-.02em}
+.stat span{font-size:13px;color:var(--muted)}
+@media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+
+/* sections */
+section{padding:80px 0;border-bottom:1px solid var(--line)}
+section.alt{background:#fff}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:36px;flex-wrap:wrap}
+h2{font-size:34px;letter-spacing:-.015em;margin:6px 0 0}
+.sec-head p{max-width:460px;color:var(--muted);margin:0}
+
+/* featured */
+.feature{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px;margin-bottom:28px}
+@media(max-width:900px){.feature{grid-template-columns:1fr}}
+.feature .imgs{display:grid;grid-template-columns:1.4fr 1fr;gap:10px}
+.feature .imgs img{width:100%;height:320px;object-fit:cover;border-radius:8px;cursor:zoom-in}
+.feature h3{font-size:26px;margin:8px 0 10px;letter-spacing:-.01em}
+.badge{display:inline-block;font-family:var(--mono);font-size:12px;padding:4px 8px;border-radius:4px;background:#fff6e0;color:#8a5a00;border:1px solid #f1d58f}
+
+/* project grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 34px -18px rgba(22,32,43,.4)}
+.card .thumb{aspect-ratio:16/10;background:#fff;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line);overflow:hidden}
+.card .thumb img{width:100%;height:100%;object-fit:cover}
+.card .thumb.contain img{object-fit:contain;padding:14px}
+.card .body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.meta{font-family:var(--mono);font-size:12px;color:var(--muted);display:flex;justify-content:space-between}
+.card h3{margin:0;font-size:19px;line-height:1.3}
+.card p{margin:0;color:#3a4653;font-size:14.5px}
+.result{margin-top:auto;padding-top:10px;border-top:1px dashed var(--line);font-size:14px}
+.result b{color:var(--accent)}
+.count{font-family:var(--mono);font-size:11px;color:var(--muted)}
+
+/* detail list */
+dl.spec{display:grid;grid-template-columns:120px 1fr;gap:6px 14px;margin:14px 0 0;font-size:14.5px}
+dl.spec dt{font-family:var(--mono);font-size:12px;color:var(--muted);padding-top:2px;text-transform:uppercase;letter-spacing:.04em}
+dl.spec dd{margin:0}
+
+/* capability tabs */
+.tabs{display:flex;gap:8px;margin-bottom:26px;flex-wrap:wrap}
+.tab{font:inherit;font-size:14px;font-weight:600;padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.cap{display:none}
+.cap.on{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:22px}
+.cap .card .thumb{aspect-ratio:16/11}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:900px){.skills{grid-template-columns:1fr}}
+.skill{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px}
+.skill h4{margin:0 0 10px;font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:13px;padding:4px 10px;border-radius:999px;background:var(--accent-soft);color:#1b4aa0}
+.logos{margin-top:30px;color:var(--muted);font-size:14.5px}
+.logos b{color:var(--ink)}
+
+/* quotes */
+.quotes{columns:3 300px;column-gap:22px}
+blockquote{break-inside:avoid;margin:0 0 22px;background:#fff;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;padding:18px 20px}
+blockquote p{margin:0 0 10px;font-size:16px}
+blockquote cite{font-style:normal;font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+/* tolerance table */
+table.tol{border-collapse:collapse;font-family:var(--mono);font-size:12.5px;width:100%;background:#fff}
+table.tol th,table.tol td{border:1px solid var(--line);padding:6px 8px;text-align:right}
+table.tol th{background:var(--bg);font-weight:500}
+table.tol td:first-child,table.tol th:first-child,table.tol td:nth-child(2){text-align:left}
+table.tol .hl{background:#e7f6e7;font-weight:500}
+
+/* beyond */
+.beyond{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:900px){.beyond{grid-template-columns:repeat(2,1fr)}}
+.beyond figure{margin:0;cursor:pointer}
+.beyond img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px}
+.beyond figcaption{font-size:14px;margin-top:8px;font-weight:500}
+
+footer{padding:56px 0;background:var(--ink);color:#c8d1db}
+footer h2{color:#fff}
+footer .row{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:24px}
+footer .mono{font-family:var(--mono);font-size:14px}
+
+/* lightbox */
+.lb{position:fixed;inset:0;background:#0b0f15;z-index:50;display:none;flex-direction:column}
+.lb.on{display:flex}
+.lb-top{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;color:#fff}
+.lb-top h3{margin:0;font-size:18px}
+.lb-top .sub{font-family:var(--mono);font-size:12px;color:#9aa7b4}
+.lb-main{flex:1;display:grid;grid-template-columns:1fr 360px;min-height:0}
+@media(max-width:900px){.lb-main{grid-template-columns:1fr;grid-template-rows:1fr auto}}
+.lb-stage{position:relative;display:flex;align-items:center;justify-content:center;min-height:0;padding:10px 60px}
+.lb-stage img{max-height:100%;max-width:100%;object-fit:contain;border-radius:6px;background:#fff}
+.lb-stage video{max-height:100%;max-width:100%;border-radius:6px;background:#000}
+.strip img.v{outline:2px dashed #8fb3f5;outline-offset:-2px}
+.strip img.v.on{outline:2px solid var(--warm)}
+.feature .more{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;grid-column:1/-1}
+.feature .more .t{position:relative;cursor:zoom-in}
+.feature .more img{width:100%;height:72px;object-fit:cover;border-radius:6px;display:block}
+.feature .more .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;color:#fff;font-size:22px;text-shadow:0 1px 6px rgba(0,0,0,.7)}
+@media(max-width:600px){.feature .more{grid-template-columns:repeat(3,1fr)}}
+.lb-info{background:#111821;color:#d5dde6;padding:22px;overflow:auto;font-size:14.5px}
+.lb-info dl.spec dt{color:#8796a6}
+.lb-info p{margin:0 0 10px}
+.navbtn,.close{background:rgba(255,255,255,.1);border:0;color:#fff;font-size:22px;width:44px;height:44px;border-radius:50%;cursor:pointer}
+.navbtn{position:absolute;top:50%;transform:translateY(-50%)}
+.navbtn.prev{left:10px}.navbtn.next{right:10px}
+.navbtn:hover,.close:hover{background:rgba(255,255,255,.22)}
+.strip{display:flex;gap:8px;padding:12px 22px;overflow-x:auto}
+.strip img{height:58px;width:84px;object-fit:cover;border-radius:4px;opacity:.5;cursor:pointer;background:#fff}
+.strip img.on{opacity:1;outline:2px solid var(--warm)}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="brand" href="#top">Justin Lee</a>
+  <div class="links">
+    <a href="#work">Work</a><a href="#capabilities">Capabilities</a><a href="#skills">Skills</a><a href="#endorsements">Endorsements</a><a href="#beyond">Beyond work</a><a href="#contact">Contact</a>
+  </div>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="who"><img src="img/headshot.jpg" alt="Justin Lee"><div><b>Justin Lee</b><div class="eyebrow">Mechanical Engineer · Product Development Lead</div></div></div>
+        <h1>Hardware from blank sheet to mass production.</h1>
+        <p class="lede">I design, analyze, and build electromechanical products: record-setting drones, Google's TPU supercomputers, satellite hardware, fiber lasers, and high-volume telecom gear. I'm happiest working on products that make people's lives better.</p>
+        <div class="cta">
+          <a class="btn primary" href="#work">See selected work</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/justinsslee/">LinkedIn ↗</a>
+        </div>
+        <div class="contact-line">Santa Clara, CA · justinsslee@gmail.com</div>
+      </div>
+      <div class="hero-img" data-open="sifly">
+        <img src="img/p004-001.jpg" alt="Several generations of SiFly long-endurance quadcopters on a workbench">
+        <div class="tag">SiFly long-endurance quadcopters · 2026</div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>20+</b><span>years in product development</span></div>
+      <div class="stat"><b>30+</b><span>products led to market</span></div>
+      <div class="stat"><b>350+</b><span>piece parts designed and built</span></div>
+      <div class="stat"><b>130+</b><span>thermal and structural analyses</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Selected work</div><h2>Products I've helped bring to life</h2></div>
+      <p>Click any project for photos and details. Most recent first.</p>
+    </div>
+
+    <div class="feature">
+      <div class="imgs">
+        <img src="img/p004-001.jpg" alt="SiFly quadcopters" data-open="sifly" data-i="0">
+        <img src="img/p004-000.jpg" alt="Justin holding a Guinness World Records certificate" data-open="sifly" data-i="1" style="object-position:top">
+        <div class="more">
+          <div class="t" data-open="sifly"><img src="img/sifly-orbit.jpg" alt="Video: SiFly drone orbiting over a farm field" data-i="2"><span class="play">▶</span></div>
+          <div class="t" data-open="sifly"><img src="img/sifly-field.jpg" alt="Justin with a SiFly drone on a landing pad" data-i="3"></div>
+          <div class="t" data-open="sifly"><img src="img/sifly-display.jpg" alt="SiFly drone with camera payload on display" data-i="4"></div>
+          <div class="t" data-open="sifly"><img src="img/sifly-ops.jpg" alt="Justin running a flight test at dusk" data-i="5"></div>
+          <div class="t" data-open="sifly"><img src="img/sifly-award.jpg" alt="SiFly team with Uncrewed Triple Challenge prize checks" data-i="6"></div>
+          <div class="t" data-open="sifly"><img src="img/sifly-flag.jpg" alt="SiFly drone carrying a payload in flight" data-i="7"></div>
+        </div>
+      </div>
+      <div>
+        <span class="badge">GUINNESS WORLD RECORD</span>
+        <div class="meta" style="margin-top:12px"><span>SiFly Aviation</span><span>2022–2026</span></div>
+        <h3>Long-Endurance Autonomous Quadcopter</h3>
+        <p>As a founding team member at SiFly, I led engineering across several drone generations, built the team from 3 to 40, and flew as lead pilot on a world-record endurance flight.</p>
+        <dl class="spec">
+          <dt>Role</dt><dd>Founding team member, lead engineer, lead pilot</dd>
+          <dt>Scope</dt><dd>Engineering leadership, product development, flight testing, customer demonstrations</dd>
+          <dt>Impact</dt><dd>World-record endurance; supported the company's Series A and move toward production</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="grid" id="projectGrid"></div>
+  </div>
+</section>
+
+<section id="capabilities" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">How I work</div><h2>Capabilities, with examples</h2></div>
+      <p>Real examples from past programs, from first sketch through analysis, test, and the factory floor.</p>
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" aria-selected="true" data-tab="design">Design</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="thermal">Thermal analysis</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="structural">Structural &amp; tolerance</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="mfg">Test &amp; manufacturing</button>
+    </div>
+    <div class="cap on" id="cap-design"></div>
+    <div class="cap" id="cap-thermal"></div>
+    <div class="cap" id="cap-structural"></div>
+    <div class="cap" id="cap-mfg"></div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Toolbox</div><h2>Skills &amp; tools</h2></div>
+      <p>B.S. Mechanical Engineering, UC Davis, plus continuing education in stress, thermal, spacecraft design, design for manufacturing, and failure analysis.</p>
+    </div>
+    <div class="skills">
+      <div class="skill"><h4>Engineering</h4><div class="chips">
+        <span class="chip">Product architecture</span><span class="chip">Detailed design</span><span class="chip">Thermal analysis</span><span class="chip">Structural analysis</span><span class="chip">Tolerance analysis</span><span class="chip">DFM / DFx</span><span class="chip">Prototyping</span><span class="chip">Electromechanical design</span><span class="chip">Flight test</span><span class="chip">Environmental test</span></div></div>
+      <div class="skill"><h4>Software</h4><div class="chips">
+        <span class="chip">Creo / Pro/E</span><span class="chip">SolidWorks</span><span class="chip">Onshape</span><span class="chip">ANSYS Mechanical</span><span class="chip">ANSYS CFX</span><span class="chip">Creo Simulate</span><span class="chip">SolidWorks Simulation</span><span class="chip">Flow Simulation</span><span class="chip">Agile</span><span class="chip">Arena</span><span class="chip">Windchill</span><span class="chip">Teamcenter</span><span class="chip">C++</span><span class="chip">Visual Basic</span><span class="chip">Arduino</span></div></div>
+      <div class="skill"><h4>Processes</h4><div class="chips">
+        <span class="chip">Injection molding</span><span class="chip">Die casting</span><span class="chip">Stamping</span><span class="chip">Extrusion</span><span class="chip">Machining</span><span class="chip">Brazing</span><span class="chip">Welding</span><span class="chip">Ultrasonic welding</span><span class="chip">Die cutting</span><span class="chip">Molded pulp</span><span class="chip">PCBs</span><span class="chip">Plating &amp; finishes</span></div></div>
+    </div>
+    <p class="logos"><b>Companies served:</b> Google, JPL/NASA, SiFly Aviation, Lumentum, SSL/Maxar, Mimosa, Supermicro, Accton, HP, Cisco, Huawei, Flex, Clorox, Keurig Dr Pepper, Teradyne, Motorola, Alcatel, Ericsson, 3Com, Acorn, Eleven, Boston Robotics, and others.</p>
+  </div>
+</section>
+
+<section id="endorsements" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">In others' words</div><h2>Endorsements</h2></div>
+      <p>From program managers, engineers, and directors I've worked with.</p>
+    </div>
+    <div class="quotes">
+      <blockquote><p>"You are one of the strongest mechanical engineers I've ever worked with… you'd fit in with the best at any company that I've been at. The best of the best."</p><cite>RB · Senior Staff Program Manager</cite></blockquote>
+      <blockquote><p>"You have a really admirable quality: calmness and composure…. I was incredibly impressed by how thorough you were during the build, the questions you asked, and your ability to always drive for the right answers."</p><cite>RK · Program Manager</cite></blockquote>
+      <blockquote><p>"If we had a team of Justin's we could take over the world."</p><cite>BB · Engineering Director</cite></blockquote>
+      <blockquote><p>"You're an engineer's engineer and just a really great guy."</p><cite>JL · Mechanical Engineering Manager</cite></blockquote>
+      <blockquote><p>"I was just telling (another engineer) how much I appreciated the way you work… Your approach to things sets a tone that's really helpful."</p><cite>MS · Data Center Engineer</cite></blockquote>
+      <blockquote><p>"You are a fantastic engineer/leader."</p><cite>AA · Principal Electrical Engineer</cite></blockquote>
+      <blockquote><p>"You're one in a million."</p><cite>BH · Senior Manufacturing Engineer</cite></blockquote>
+      <blockquote><p>"You're a true pro, and fun to work with!!"</p><cite>AN · PCB Layout Engineer</cite></blockquote>
+    </div>
+  </div>
+</section>
+
+<section id="beyond">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Off the clock</div><h2>Beyond work</h2></div>
+      <p>I still design and build things for fun, and I serve in my community.</p>
+    </div>
+    <div class="beyond" id="beyondGrid"></div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap row">
+    <div>
+      <div class="eyebrow" style="color:#8fb3f5">Contact</div>
+      <h2>Let's build something meaningful.</h2>
+      <p style="max-width:520px">I'm open to senior technical roles on products that improve people's lives.</p>
+    </div>
+    <div class="mono">
+      <div>justinsslee@gmail.com</div>
+      <div>Santa Clara, California</div>
+      <div style="margin-top:8px"><a href="https://www.linkedin.com/in/justinsslee/" style="color:#8fb3f5">linkedin.com/in/justinsslee ↗</a></div>
+    </div>
+  </div>
+</footer>
+
+<div class="lb" id="lb" aria-hidden="true">
+  <div class="lb-top"><div><h3 id="lbTitle"></h3><div class="sub" id="lbSub"></div></div><button class="close" id="lbClose" aria-label="Close">×</button></div>
+  <div class="lb-main">
+    <div class="lb-stage">
+      <button class="navbtn prev" id="lbPrev" aria-label="Previous">‹</button>
+      <img id="lbImg" alt="">
+      <video id="lbVid" controls muted loop playsinline preload="none" style="display:none"></video>
+      <button class="navbtn next" id="lbNext" aria-label="Next">›</button>
+    </div>
+    <div class="lb-info" id="lbInfo"></div>
+  </div>
+  <div class="strip" id="lbStrip"></div>
+</div>
+
+<script>
+const P = {
+  sifly:{t:"Long-Endurance Autonomous Quadcopter",y:"SiFly Aviation · 2026",imgs:["p004-001","p004-000","vid:sifly-orbit","sifly-field","sifly-display","sifly-ops","sifly-award","sifly-flag"],
+    body:"<p>World-record-breaking endurance quadcopter developed as a founding team member at SiFly Aviation.</p>",
+    spec:[["Role","Founding team member, lead engineer, lead pilot"],["Scope","Engineering leadership, product development, flight testing, product demonstrations"],["Result","Guinness World Record for endurance"]]},
+  coax:{t:"Coaxial Helicopter & Novel UAVs",y:"SiFly Aviation · 2023",imgs:["p005-002","p005-003","p005-004"],fit:"cover",
+    sum:"Blank-sheet unmanned aircraft concepts, taken through build and flight test.",
+    res:"<b>Documented, flying prototypes</b> from a blank sheet",
+    spec:[["Role","System engineer, mechanical engineer & analyst, vendor manager, builder, flight tester"],["Scope","Blank sheet to documented functional prototypes"]]},
+  motion:{t:"Motion Control Upgrade for Optical Manufacturing",y:"Taproot (consulting) · 2022",imgs:["p006-006","p006-005","new-06","new-07","new-08","new-09"],
+    sum:"Revived poorly documented production lines built on failing end-of-life components.",
+    res:"Protected lines carrying <b>80% of the client's business</b>",
+    spec:[["Problem","Legacy lines were poorly documented and used failing end-of-life parts. 80% of the business relied on them."],["Scope","Study of existing hardware and software; component research and procurement; prototype build and test; system upgrade, characterization, and software update"],["Role","Mechanical, electrical, and software engineer"]]},
+  tpu:{t:"Google TPU Supercomputers",y:"Google · 2018–2021",imgs:["p007-007","p007-009"],
+    sum:"TPU v3, v4 and v5: liquid-cooled, exaflop-scale machine-learning training systems.",
+    res:"<b>Best-in-market performance per cost</b>; used to train leading LLMs",
+    spec:[["Role","Technical lead of mechanical systems from concept to deployment: superpod, rack, tray, liquid cooling, water handling, power, fiber and copper interconnect"],["Processes","Stamping, injection molding, machining, welding, brazing, skiving, casting, extruding, die cutting, cabling, optics"],["Result","Optimized for deployment velocity and serviceability. Used to train the world's LLMs."]]},
+  antenna:{t:"5 GHz Omnidirectional Antenna",y:"Mimosa Networks · 2017",imgs:["p008-010","p008-011","new-13","new-11","new-10","new-30"],fit:"contain",
+    sum:"Outdoor omnidirectional antenna produced in the low thousands.",
+    res:"Full 3D/2D design, analysis, and vendor DFM <b>in 3 weeks</b>",
+    spec:[["Role","Mechanical design, analysis, prototyping, testing, fixture design, CM training"],["Processes","Injection molding, die casting, aluminum and plastic extrusion, stamping, die cutting, turning, ultrasonic welding"],["Volume","Low thousands"]]},
+  laser:{t:"Kilowatt-Class Fiber Laser",y:"Lumentum · 2016",imgs:["p009-012","new-14","new-16","p009-013"],fit:"contain",
+    sum:"Liquid-cooled kilowatt-class lasers for material processing.",
+    res:"<b>Best-in-market performance per cost</b>, easier to build than its predecessor",
+    spec:[["Role","Mechanical design, analysis, prototyping, testing, fixture design, CM training"],["Processes","Injection molding, stamping, machining, brazing, rapid prototyping, powder coating, die cutting, electropolishing, hard anodizing, fiber fusion splicing"],["Volume","Low thousands"]]},
+  mount:{t:"Novel Optical Mount",y:"Lumentum · 2014",imgs:["p010-017","p010-016","new-18","new-36"],fit:"contain",
+    sum:"Optical mount with X and Y adjustment and lock, all from a single face.",
+    res:"<b>60% of competitor cost</b> with better backlash, crosstalk, and shock performance",
+    spec:[["Processes","Machining, turning, heavy use of off-the-shelf parts"],["Volume","Low hundreds"]]},
+  ocxo:{t:"Aerospace Oven-Controlled Crystal Oscillator",y:"Space Systems/Loral · 2009",imgs:["p011-019","p011-018","new-20","new-19","new-21","new-22","new-23"],fit:"contain",
+    sum:"Communication-satellite frequency source with parts-per-billion stability.",
+    res:"<b>~1000× better stability</b> over 75 °C than its predecessor, at the same cost",
+    spec:[["Role","Led mechanical design, analysis, testing, budget, scope, and schedule"],["Processes","Machining, die cutting, soldering, precision surface finishing"],["Volume","Mid hundreds"]]},
+  moto:{t:"Motorola 2.4 GHz Access Point",y:"Accton · 2004",imgs:["p012-020","p012-021","new-24"],fit:"contain",
+    sum:"Enterprise wireless access point, from industrial design surface to mass production.",
+    res:"Shipped in the <b>hundreds of thousands</b>",
+    spec:[["Role","Converted the ID surface into a mechanical design through mass production"],["Processes","Injection molding, stamping, die casting, die cutting, turning, cabling"],["Volume","Hundreds of thousands"]]}
+};
+const CAPS = {
+  design:[
+    {k:"fixtures",t:"Assembly Jigs & Test Fixtures",imgs:["p013-022","new-31","new-27","new-25"],sum:"Fixtures used in development and high-volume production."},
+    {k:"packaging",t:"Packaging & Palletization",imgs:["p014-023","new-32","new-29","new-28"],sum:"Packaging layouts, corrugated and glossy boxes, molded pulp trays, cartonization, and palletization."},
+    {k:"sketch",t:"Sketching & Concept Development",imgs:["p015-028","p015-032","p015-033","p015-024","p015-031","p015-027"],sum:"Quick sketches and line diagrams to explore solutions before committing to CAD."},
+    {k:"teardown",t:"Competitive Teardown Studies",imgs:["p016-034","p016-035","p016-036","p016-037","p016-038","p016-039","new-35"],sum:"Learning and applying design solutions from other industries."},
+    {k:"pcba",t:"PCBA & MCAD/IDF Collaboration",imgs:["p017-041","p017-040"],sum:"Two-way exchange of keep-outs, height limits, and IDF data with PCB layout. Board size, I/O, mounting, and component placement set to meet stiffness and thermal requirements."}
+  ],
+  thermal:[
+    {k:"cond",t:"Conduction & Radiation",imgs:["p018-042","p018-043"],sum:"Spreadsheet thermal model checked against a Creo Simulate model for an aerospace product."},
+    {k:"conv",t:"Incompressible Flow Convection",imgs:["p019-050","p019-051","p019-052","p019-048","p019-046"],sum:"Spreadsheet model and ANSYS CFX results for a fluid-filled cold plate."},
+    {k:"param",t:"Parameter Study & Optimization",imgs:["p020-053"],sum:"Moving from a baseline to an optimized design by testing and combining design variables in SolidWorks Flow Simulation."},
+    {k:"verify",t:"Thermal Verification",imgs:["p021-054","new-23"],sum:"Instrumented EVT unit; test data reduced to junction temperatures, gradients, time constants, and thermal resistances."}
+  ],
+  structural:[
+    {k:"modal",t:"Modal Analysis",imgs:["p022-056","p022-055","p022-057","p022-058"],sum:"Confirmed fundamental frequencies stay clear of transport, environmental, and operating vibration. Creo Simulate, verified on a shaker table."},
+    {k:"static",t:"Static Analysis",imgs:["p023-061","p023-062","p023-059","new-41","new-42","new-40"],sum:"Free-body diagram of lock-screw loads fed into SolidWorks Simulation to quantify lens movement from tightening."},
+    {k:"tol",t:"Tolerance Analysis",imgs:["new-39","new-38"],fit:"contain",sum:"Using statistical methods to predict nominal gaps, USL, LSL, in multi-component assemblies"}
+  ],
+  mfg:[
+    {k:"env",t:"Environmental Testing",imgs:["p025-064"],sum:"Operational vibration, thermal-vacuum, and icing tests."},
+    {k:"builds",t:"Domestic & International Builds",imgs:["p026-065"],sum:"Supported EVT/DVT/PVT builds at contract manufacturers: followed material from IQC to OQC, reviewed work instructions and fixtures, wrote cosmetic specs, and drove issue lists."},
+    {k:"tooling",t:"Injection & Die-Cast Tooling Bring-Up",imgs:["p027-066"],sum:"DFM reviews, onsite T1 shots, FAI measurements, cycle-time and yield improvements, limit samples, and Cpk checks against tolerance analyses."}
+  ]
+};
+const BEYOND = [
+  {k:"em",t:"Electromechanical builds",imgs:["p028-067","p028-068","p028-069","p028-070"]},
+  {k:"furn",t:"Outdoor furniture",imgs:["p029-071","p029-073","p029-072"]},
+  {k:"garden",t:"Garden things",imgs:["p030-074","p030-075","p030-076","p030-077"]},
+  {k:"vol",t:"Community volunteering",imgs:["p031-079","p031-078","p031-080","p031-081"]}
+];
+const TOL = `<table class="tol"><tr><th>ID</th><th>Element</th><th>Nominal [in]</th><th>± [in]</th><th>Dir</th></tr>
+<tr><td>B</td><td>Boss radius</td><td>0.066</td><td>0.0010</td><td>−1</td></tr>
+<tr><td>C</td><td>Boss position</td><td>3.072</td><td>0.0030</td><td>−1</td></tr>
+<tr><td>D</td><td>Boss radius</td><td>0.066</td><td>0.0010</td><td>−1</td></tr>
+<tr><td>E</td><td>PCB hole radius</td><td>0.072</td><td>0.0020</td><td>+1</td></tr>
+<tr><td>F</td><td>PCB hole position</td><td>3.072</td><td>0.0030</td><td>+1</td></tr>
+<tr><td>G</td><td>PCB hole radius</td><td>0.072</td><td>0.0020</td><td>+1</td></tr>
+<tr><td colspan="2">"Gap" RSS</td><td>0.0120</td><td>0.0053</td><td></td></tr>
+<tr><td colspan="2">Minimum gap</td><td colspan="3">0.0067</td></tr>
+<tr><td colspan="2">Thermal growth, Al vs. polyimide</td><td colspan="3">0.0037</td></tr>
+<tr class="hl"><td colspan="2">Clearance after tol. + CTE</td><td colspan="3">0.0030 ✓</td></tr></table>`;
+
+const isVid = k => k.startsWith("vid:");
+const src = k => `img/${isVid(k)?k.slice(4):k}.jpg`;
+const all = {}; // key -> item for lightbox
+const specHTML = s => s ? `<dl class="spec">${s.map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join("")}</dl>` : "";
+
+function card(key,it,showRes){
+  all[key]=it;
+  const el=document.createElement("article");
+  el.className="card"; el.dataset.open=key;
+  el.innerHTML=`<div class="thumb ${it.fit==='contain'?'contain':''}"><img loading="lazy" src="${src(it.imgs[0])}" alt="${it.t}"></div>
+  <div class="body">${it.y?`<div class="meta"><span>${it.y}</span><span class="count">${it.imgs.length} img</span></div>`:`<div class="meta"><span></span><span class="count">${it.imgs.length} img</span></div>`}
+  <h3>${it.t}</h3><p>${it.sum||""}</p>${showRes&&it.res?`<div class="result">${it.res}</div>`:""}</div>`;
+  return el;
+}
+const grid=document.getElementById("projectGrid");
+Object.entries(P).forEach(([k,v])=>{ if(k==="sifly"){all[k]=v;return;} grid.appendChild(card(k,v,true)); });
+Object.entries(CAPS).forEach(([tab,items])=>{
+  const box=document.getElementById("cap-"+tab);
+  items.forEach(it=>{ it.body=`<p>${it.sum}</p>`+(it.tol?TOL:""); box.appendChild(card(it.k,it,false)); });
+});
+const bg=document.getElementById("beyondGrid");
+BEYOND.forEach(it=>{ all[it.k]=it; const f=document.createElement("figure"); f.dataset.open=it.k;
+  f.innerHTML=`<img loading="lazy" src="${src(it.imgs[0])}" alt="${it.t}"><figcaption>${it.t}</figcaption>`; bg.appendChild(f); });
+
+// tabs
+document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected",x===b));
+  document.querySelectorAll(".cap").forEach(c=>c.classList.toggle("on",c.id==="cap-"+b.dataset.tab));
+}));
+
+// lightbox
+const lb=document.getElementById("lb"), lbImg=document.getElementById("lbImg"), strip=document.getElementById("lbStrip");
+let cur=null, idx=0;
+const lbVid=document.getElementById("lbVid");
+function show(i){ idx=(i+cur.imgs.length)%cur.imgs.length; const k=cur.imgs[idx];
+  if(isVid(k)){ lbImg.style.display="none"; lbVid.style.display=""; lbVid.poster=src(k); lbVid.src=`vid/${k.slice(4)}.mp4`; lbVid.play().catch(()=>{}); }
+  else { lbVid.pause(); lbVid.removeAttribute("src"); lbVid.load(); lbVid.style.display="none"; lbImg.style.display=""; lbImg.src=src(k); lbImg.alt=cur.t; }
+  [...strip.children].forEach((c,j)=>c.classList.toggle("on",j===idx)); }
+function open(key,i=0){
+  cur=all[key]; if(!cur) return;
+  document.getElementById("lbTitle").textContent=cur.t;
+  document.getElementById("lbSub").textContent=cur.y||"";
+  document.getElementById("lbInfo").innerHTML=(cur.body||(cur.sum?`<p>${cur.sum}</p>`:""))+(cur.res?`<p>${cur.res}</p>`:"")+specHTML(cur.spec);
+  document.getElementById("lbInfo").style.display=(cur.body||cur.sum||cur.spec)?"":"none";
+  strip.innerHTML=cur.imgs.map(k=>`<img src="${src(k)}" alt=""${isVid(k)?' class="v" title="Video"':""}>`).join("");
+  [...strip.children].forEach((c,j)=>c.onclick=()=>show(j));
+  const multi=cur.imgs.length>1; document.getElementById("lbPrev").style.display=document.getElementById("lbNext").style.display=multi?"":"none"; strip.style.display=multi?"":"none";
+  show(i); lb.classList.add("on"); lb.setAttribute("aria-hidden","false"); document.body.style.overflow="hidden";
+}
+function close(){ lbVid.pause(); lb.classList.remove("on"); lb.setAttribute("aria-hidden","true"); document.body.style.overflow=""; }
+document.addEventListener("click",e=>{ const t=e.target.closest("[data-open]"); if(t && !lb.contains(t)) open(t.dataset.open, +(e.target.dataset.i||0)); });
+document.getElementById("lbClose").onclick=close;
+document.getElementById("lbPrev").onclick=()=>show(idx-1);
+document.getElementById("lbNext").onclick=()=>show(idx+1);
+lb.addEventListener("click",e=>{ if(e.target===lb||e.target.classList.contains("lb-stage")) close(); });
+document.addEventListener("keydown",e=>{ if(!lb.classList.contains("on"))return; if(e.key==="Escape")close(); if(e.key==="ArrowLeft")show(idx-1); if(e.key==="ArrowRight")show(idx+1); });
+</script>
+</body>
+</html>
