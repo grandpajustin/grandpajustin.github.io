@@ -370,7 +370,7 @@ const P = {
     sum:"TPU v3, v4 and v5: liquid-cooled, exaflop-scale machine-learning training systems.",
     res:"<b>Best-in-market performance per cost</b>; used to train leading LLMs",
     spec:[["Role","Technical lead of mechanical systems from concept to deployment: superpod, rack, tray, liquid cooling, water handling, power, fiber and copper interconnect"],["Processes","Stamping, injection molding, machining, welding, brazing, skiving, casting, extruding, die cutting, cabling, optics"],["Result","Optimized for deployment velocity and serviceability. Used to train the world's LLMs."]]},
-  antenna:{t:"5 GHz Omnidirectional Antenna",y:"Mimosa Networks · 2017",imgs:["p008-010","new-30","new-13","new-11"],fit:"contain",
+  antenna:{t:"5 GHz Omnidirectional Antenna",y:"Mimosa Networks · 2017",imgs:["new-30","p008-010","new-13","new-11"],pos:"50% 22%",
     sum:"Outdoor omnidirectional antenna produced in the low thousands.",
     res:"Full 3D/2D design, analysis, and vendor DFM <b>in 3 weeks</b>",
     spec:[["Role","Mechanical design, analysis, prototyping, testing, fixture design, CM training"],["Processes","Injection molding, die casting, aluminum and plastic extrusion, stamping, die cutting, turning, ultrasonic welding"],["Volume","Low thousands"]]},
@@ -443,7 +443,7 @@ function card(key,it,showRes){
   all[key]=it;
   const el=document.createElement("article");
   el.className="card"; el.dataset.open=key;
-  el.innerHTML=`<div class="thumb ${it.fit==='contain'?'contain':''}"><img loading="lazy" src="${src(it.imgs[0])}" alt="${it.t}"></div>
+  el.innerHTML=`<div class="thumb ${it.fit==='contain'?'contain':''}"><img loading="lazy" src="${src(it.imgs[0])}" alt="${it.t}"${it.pos?` style="object-position:${it.pos}"`:""}></div>
   <div class="body">${it.y?`<div class="meta"><span>${it.y}</span><span class="count">${it.imgs.length} img</span></div>`:`<div class="meta"><span></span><span class="count">${it.imgs.length} img</span></div>`}
   <h3>${it.t}</h3><p>${it.sum||""}</p>${showRes&&it.res?`<div class="result">${it.res}</div>`:""}</div>`;
   return el;
